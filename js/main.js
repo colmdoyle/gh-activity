@@ -37,28 +37,47 @@ function callback_user(obj) {
 
 function callback_events(obj) {
 	var activities = obj.data;
-		$.each(activities, function() {
-		
+	activities = activities.reverse();
+		$.each(activities, function(index) {
+			console.log(this);
 			switch(this.type)
 			{
 				case 'WatchEvent':
-					verb = 'starred';
+					verb = 'starred ';
+					repo_name = this.repo.name;
+					repo_url = 'https://github.com/' + repo_name;
+					repo_link = '<a href="' + repo_url + '"> ' + repo_name + '</a>';
+					sentence = this.actor.login + ' ' + verb + repo_link; 
 					break;
 				case 'PushEvent':
-					verb = 'pushed a commit to';
+					verb = 'pushed a commit to ';
+					repo_name = this.repo.name;
+					repo_url = 'https://github.com/' + repo_name;
+					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					sentence = this.actor.login + ' ' + verb + repo_link; 
+					break;
+				case 'CreateEvent':
+					verb = 'created ';
+					object_type = this.payload.ref_type;
+					repo_name = this.repo.name;
+					repo_url = 'https://github.com/' + repo_name;
+					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					sentence = this.actor.login + ' ' + verb + object_type + ' at ' + repo_link; 
 					break;
 				default:
-					verb = 'did something';
+					verb = 'did something with ';
+					repo_name = this.repo.name;
+					repo_url = 'https://github.com/' + repo_name;
+					repo_link = '<a href="' + repo_url + '"> ' + repo_name + '</a>';
+					sentence = this.actor.login + ' ' + verb + repo_link; 
 					break;
 			}
-			console.log(this);
 			var individualstory = '<div class="row" id="individual-story-'+ this.id + '">';
 			individualstory += '<div class="span5">';
-			individualstory += '<p>' + this.actor.login + ' ' + verb + ' ' + this.repo.name + '</p>';
+			individualstory += '<p>' + sentence + '</p>';
 			individualstory += '</div>';
 			individualstory += '</div>';
-			$('#activities-container').append(individualstory);
-			$('#individual-story-' + this.id).fadeIn(3000);
+			$(individualstory).hide().prependTo('#activities-container').delay(index * 200).slideDown('fast');
 		});
 }
 
