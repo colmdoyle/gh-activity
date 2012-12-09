@@ -38,7 +38,7 @@ function callback_user(obj) {
 function callback_events(obj) {
 	var activities = obj.data;
 		$.each(activities, function() {
-			console.log(this);
+		
 			switch(this.type)
 			{
 				case 'WatchEvent':
@@ -51,6 +51,7 @@ function callback_events(obj) {
 					verb = 'did something';
 					break;
 			}
+			console.log(this);
 			var individualstory = '<div class="row" id="individual-story-'+ this.id + '">';
 			individualstory += '<div class="span5">';
 			individualstory += '<p>' + this.actor.login + ' ' + verb + ' ' + this.repo.name + '</p>';
