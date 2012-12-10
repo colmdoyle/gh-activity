@@ -42,12 +42,98 @@ function callback_events(obj) {
 			console.log(this);
 			switch(this.type)
 			{
-				case 'WatchEvent':
-					verb = 'starred ';
+				case 'CommitCommentEvent':
+					// TODO
+					sentence = 'Not Set';
+					break;
+				case 'CreateEvent':
+					verb = 'created a ';
+					object_type = this.payload.ref_type;
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '"> ' + repo_name + '</a>';
+					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					sentence = this.actor.login + ' ' + verb + object_type + ' at ' + repo_link; 
+					break;
+				case 'DeleteEvent':
+					verb = 'deleted a ';
+					object_type = this.payload.ref_type;
+					repo_name = this.repo.name;
+					repo_url = 'https://github.com/' + repo_name;
+					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					sentence = this.actor.login + ' ' + verb + object_type + ' at ' + repo_link; 
+					break;
+				case 'DownloadEvent':
+					verb = 'uploaded ';
+					file_name = this.payload.download.name;
+					repo_name = this.repo.name;
+					repo_url = 'https://github.com/' + repo_name;
+					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					sentence = this.actor.login + ' ' + verb + object_type + ' to ' + repo_link; 
+					break;
+				case 'FollowEvent':
+					verb = 'started following ';
+					followed_user = this.payload.target.name;
+					user_url = 'https://github.com/' + followed_user;
+					user_link = '<a href="' + user_url + '">' + followed_user + '</a>';
+					sentence = this.actor.login + ' ' + verb + user_link; 
+					break;
+				case 'ForkEvent':
+					verb = 'forked ';
+					
+					source_repo_name = this.repo.name;
+					source_repo_url = 'https://github.com/' + source_repo_name;
+					source_repo_link = '<a href="' + source_repo_url + '">' + source_repo_name + '</a>';
+					
+					dest_repo_name = this.payload.forkee.full_name;
+					dest_repo_url = 'https://github.com/' + dest_repo_name;
+					dest_repo_link = '<a href="' + dest_repo_url + '">' + dest_repo_name + '</a>';
+					
 					sentence = this.actor.login + ' ' + verb + repo_link; 
+					break;
+				case 'ForkApplyEvent':
+					// TODO
+					sentence = 'Not Set';
+					break;
+				case 'GistEvent':
+					verb = this.payload.action + 'd ';
+					gist_name = 'gist: ' + this.payload.gist.id;
+					gist_url = this.payload.html_url;
+					gist_link = '<a href="' + gist_url + '">' + gist_name + '</a>';
+					sentence = this.actor.login + ' ' + verb + gist_link; 
+					break;
+				case 'IssueCommentEvent':
+					// TODO
+					sentence = 'Not Set';
+					break;
+				case 'IssuesEvent':
+					// TODO
+					sentence = 'Not Set';
+					break;
+				case 'MemberEvent':
+					verb = this.payload.action + ' ';
+					
+					member_name = this.payload.member.login;
+					
+					repo_name = this.repo.name;
+					repo_url = 'https://github.com/' + repo_name;
+					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					
+					sentence = this.actor.login + ' ' + verb + ' ' + member_name + ' to ' + repo_link; 
+					break;
+				case 'PublicEvent':
+					verb = 'open sourced ';
+					repo_name = this.repo.name;
+					repo_url = 'https://github.com/' + repo_name;
+					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					sentence = this.actor.login + ' ' + verb + repo_link; 
+					break;
+				case 'PullRequestEvent':
+					// TODO
+					sentence = 'Not Set';
+					break;
+				case 'PullRequestReviewCommentEvent':
+					// TODO
+					sentence = 'Not Set';
 					break;
 				case 'PushEvent':
 					verb = 'pushed a commit to ';
@@ -56,13 +142,16 @@ function callback_events(obj) {
 					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
 					sentence = this.actor.login + ' ' + verb + repo_link; 
 					break;
-				case 'CreateEvent':
-					verb = 'created ';
-					object_type = this.payload.ref_type;
+				case 'TeamAddEvent':
+					// TODO
+					sentence = 'Not Set';
+					break;
+				case 'WatchEvent':
+					verb = 'starred ';
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
-					sentence = this.actor.login + ' ' + verb + object_type + ' at ' + repo_link; 
+					repo_link = '<a href="' + repo_url + '"> ' + repo_name + '</a>';
+					sentence = this.actor.login + ' ' + verb + repo_link; 
 					break;
 				default:
 					verb = 'did something with ';
