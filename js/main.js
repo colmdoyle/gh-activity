@@ -30,37 +30,65 @@ function jsonp(path, callback_var) {
 }
 
 function callback_user(obj) {
+	if (obj.data.message && obj.data.message.substr(0, 3) === 'API') {
+	  gravatar.innerHTML = '<img src="img/gravatar-user-420.png"/>';
+    username.innerHTML = user;
+    reponums.innerHTML = '';
+    document.getElementById('activities-container').innerHTML = 'GitHub Rate Limit Exceeded';
+	} else {
     gravatar.innerHTML = '<img src="' + obj.data.avatar_url + '"/>';
-    username.innerHTML = obj.data.name;
+    if (!obj.data.name) {
+	    username.innerHTML = obj.data.login;
+    } else {
+	    username.innerHTML = obj.data.name;
+    }
     reponums.innerHTML = addCommas(obj.data.public_repos) + ' public repositories';
+    jsonp('https://api.github.com/users/' + user + '/events', 'callback_events');
+  }
 }
 
 function callback_events(obj) {
 	var activities = obj.data;
 	activities = activities.reverse();
 		$.each(activities, function(index) {
-			console.log(this);
+			//console.log(this);
+			var icon = 'icon-github';
 			switch(this.type)
 			{
 				case 'CommitCommentEvent':
-					// !TODO
-					sentence = 'Not Set';
+					verb = 'commented on commit';
+					commit_name = this.repo.name+'@'+this.payload.comment.commit_id.substring(0, 7);
+					commit_link = '<a href="' + this.payload.comment.html_url + '">' + commit_name + '</a>';
+
+					sentence = this.actor.login + ' ' + verb + ' ' + commit_link;
+					icon = 'icon-comments-alt';
 					break;
 				case 'CreateEvent':
-					verb = 'created a ';
+					verb = 'created ';
 					object_type = this.payload.ref_type;
-					repo_name = this.repo.name;
-					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
-					sentence = this.actor.login + ' ' + verb + object_type + ' at ' + repo_link; 
+
+					if (object_type == 'repository') {
+						repo_name = this.repo.name.split("/");
+						repo_url = 'https://github.com/' + repo_name;
+						repo_link = '<a href="' + repo_url + '">' + repo_name[1] + '</a>';
+						sentence = this.actor.login + ' ' + verb + object_type + ' ' + repo_link; 
+					} else {
+						repo_name = this.repo.name;
+						repo_url = 'https://github.com/' + repo_name;
+						repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+						sentence = this.actor.login + ' ' + verb + object_type +' '+this.payload.ref + ' at ' + repo_link; 
+					}
+					
 					break;
 				case 'DeleteEvent':
-					verb = 'deleted a ';
+					verb = 'deleted ';
 					object_type = this.payload.ref_type;
+					object_name = this.payload.ref;
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
 					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
-					sentence = this.actor.login + ' ' + verb + object_type + ' at ' + repo_link; 
+					sentence = this.actor.login + ' ' + verb + object_type + ' ' + object_name + ' at ' + repo_link;
+					icon = 'icon-trash';
 					break;
 				case 'DownloadEvent':
 					verb = 'uploaded ';
@@ -91,8 +119,13 @@ function callback_events(obj) {
 					sentence = this.actor.login + ' ' + verb + repo_link; 
 					break;
 				case 'ForkApplyEvent':
-					// !TODO
-					sentence = 'Not Set';
+					verb = 'applied fork commits';
+					
+					repo_name = this.repo.name;
+					repo_url = 'https://github.com/' + repo_name;
+					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+
+					sentence = this.actor.login + ' ' + verb + ' to ' + repo_link;
 					break;
 				case 'GistEvent':
 					verb = this.payload.action + 'd ';
@@ -111,6 +144,7 @@ function callback_events(obj) {
 					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
 
 					sentence = this.actor.login + ' ' + verb + ' ' + issue_link + ' at ' + repo_link;
+					icon = 'icon-comments-alt';
 					break;
 				case 'IssuesEvent':
 					verb = this.payload.action + ' issue';
@@ -122,6 +156,12 @@ function callback_events(obj) {
 					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
 
 					sentence = this.actor.login + ' ' + verb + ' ' + issue_link + ' at ' + repo_link;
+					if (this.payload.action =='closed'){
+						icon = 'icon-check';
+					} else {
+						icon = 'icon-exclamation-sign';							
+					}
+
 					break;
 				case 'MemberEvent':
 					verb = this.payload.action + ' ';
@@ -142,12 +182,20 @@ function callback_events(obj) {
 					sentence = this.actor.login + ' ' + verb + repo_link; 
 					break;
 				case 'PullRequestEvent':
-					// !TODO
-					sentence = 'Not Set';
+					verb = this.payload.action + ' pull request';
+					pull_title = this.payload.pull_request.title;
+					pull_link = '<a href="' + this.payload.pull_request.html_url + '">' + pull_title + '</a>';
+
+					repo_name = this.repo.name;
+					repo_url = 'https://github.com/' + repo_name;
+					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+
+					sentence = this.actor.login + ' ' + verb + ' ' + pull_link + ' at ' + repo_link;
 					break;
 				case 'PullRequestReviewCommentEvent':
-					// !TODO
-					sentence = 'Not Set';
+					// !TODO PullRequestReviewCommentEvent
+					console.warn('Event '+this.type+' not shown');
+					console.log(this);
 					break;
 				case 'PushEvent':
 					verb = 'pushed a commit to ';
@@ -157,8 +205,9 @@ function callback_events(obj) {
 					sentence = this.actor.login + ' ' + verb + repo_link; 
 					break;
 				case 'TeamAddEvent':
-					// !TODO
-					sentence = 'Not Set';
+					// !TODO TeamAddEvent
+					console.warn('Event '+this.type+' not shown');
+					console.log(this);
 					break;
 				case 'WatchEvent':
 					verb = 'starred ';
@@ -175,14 +224,20 @@ function callback_events(obj) {
 					sentence = this.actor.login + ' ' + verb + repo_link; 
 					break;
 			}
+			if (sentence) {
 			var individualstory = '<div class="row" id="individual-story-'+ this.id + '">';
-			individualstory += '<div class="span3">';
-			individualstory += '<p>' + sentence + '</p>';
-			individualstory += '</div>';
-			individualstory += '</div>';
-			$(individualstory).hide().prependTo('#activities-container').delay(index * 200).slideDown('fast');
+				individualstory += '<div class="activity-icon">';
+   			individualstory += '<i class="'+icon+'"></i>';
+				individualstory += '</div>';
+				individualstory += '<div class="activity">';
+				individualstory += '<p>';
+   			individualstory += sentence;
+   			individualstory += '</p>';
+				individualstory += '</div>';
+				individualstory += '</div>';
+				$(individualstory).hide().prependTo('#activities-container').delay(index * 200).slideDown('fast');
+			}
 		});
 }
 
 jsonp('https://api.github.com/users/' + user, 'callback_user');
-jsonp('https://api.github.com/users/' + user + '/events', 'callback_events');
