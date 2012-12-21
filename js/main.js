@@ -43,7 +43,7 @@ function callback_events(obj) {
 			switch(this.type)
 			{
 				case 'CommitCommentEvent':
-					// TODO
+					// !TODO
 					sentence = 'Not Set';
 					break;
 				case 'CreateEvent':
@@ -91,7 +91,7 @@ function callback_events(obj) {
 					sentence = this.actor.login + ' ' + verb + repo_link; 
 					break;
 				case 'ForkApplyEvent':
-					// TODO
+					// !TODO
 					sentence = 'Not Set';
 					break;
 				case 'GistEvent':
@@ -102,12 +102,26 @@ function callback_events(obj) {
 					sentence = this.actor.login + ' ' + verb + gist_link; 
 					break;
 				case 'IssueCommentEvent':
-					// TODO
-					sentence = 'Not Set';
+					verb = 'commented on issue';
+					issue_name = this.payload.issue.title;
+					issue_link = '<a href="' + this.payload.issue.html_url + '">' + issue_name + '</a>';
+
+					repo_name = this.repo.name;
+					repo_url = 'https://github.com/' + repo_name;
+					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+
+					sentence = this.actor.login + ' ' + verb + ' ' + issue_link + ' at ' + repo_link;
 					break;
 				case 'IssuesEvent':
-					// TODO
-					sentence = 'Not Set';
+					verb = this.payload.action + ' issue';
+					issue_name = this.payload.issue.title;
+					issue_link = '<a href="' + this.payload.issue.html_url + '">' + issue_name + '</a>';
+
+					repo_name = this.repo.name;
+					repo_url = 'https://github.com/' + repo_name;
+					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+
+					sentence = this.actor.login + ' ' + verb + ' ' + issue_link + ' at ' + repo_link;
 					break;
 				case 'MemberEvent':
 					verb = this.payload.action + ' ';
@@ -128,11 +142,11 @@ function callback_events(obj) {
 					sentence = this.actor.login + ' ' + verb + repo_link; 
 					break;
 				case 'PullRequestEvent':
-					// TODO
+					// !TODO
 					sentence = 'Not Set';
 					break;
 				case 'PullRequestReviewCommentEvent':
-					// TODO
+					// !TODO
 					sentence = 'Not Set';
 					break;
 				case 'PushEvent':
@@ -143,7 +157,7 @@ function callback_events(obj) {
 					sentence = this.actor.login + ' ' + verb + repo_link; 
 					break;
 				case 'TeamAddEvent':
-					// TODO
+					// !TODO
 					sentence = 'Not Set';
 					break;
 				case 'WatchEvent':
@@ -162,7 +176,7 @@ function callback_events(obj) {
 					break;
 			}
 			var individualstory = '<div class="row" id="individual-story-'+ this.id + '">';
-			individualstory += '<div class="span5">';
+			individualstory += '<div class="span3">';
 			individualstory += '<p>' + sentence + '</p>';
 			individualstory += '</div>';
 			individualstory += '</div>';

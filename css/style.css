@@ -1,0 +1,35 @@
+.wrapper { 
+	padding: 10px;
+	border: #aaa 1px solid;
+	background-color: transparent;
+	height: 289px !important;
+	width: 289px !important;
+	overflow: hidden !important;
+}
+
+#info-container {
+}
+
+body {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	color: #333;
+}
+
+#gravatar {
+	width: 60px;
+	float: left;
+	margin-left: 20px;
+}
+
+#gh-user-dtls {
+	width: 140px;
+}
+
+#activities-container {
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 11px;
+	word-break: break-word;
+}
