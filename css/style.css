@@ -24,7 +24,9 @@ body {
 }
 
 #gh-user-dtls {
-	width: 140px;
+	width: 200px;
+	margin-left: 20px;
+	float: left;
 }
 
 #activities-container {
@@ -50,6 +52,8 @@ body {
 	padding-top: 5px;
 }
 
-.activity i {
-	margin-right: 10px;
+.container {
+	width: 289px;
+	padding: 0;
+	margin: 0;
 }

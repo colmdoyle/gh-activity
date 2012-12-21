@@ -33,7 +33,7 @@ function callback_user(obj) {
 	if (obj.data.message && obj.data.message.substr(0, 3) === 'API') {
 	  gravatar.innerHTML = '<img src="img/gravatar-user-420.png"/>';
     username.innerHTML = user;
-    reponums.innerHTML = '';
+    $('#gh-repo-nums').remove();
     document.getElementById('activities-container').innerHTML = 'GitHub Rate Limit Exceeded';
 	} else {
     gravatar.innerHTML = '<img src="' + obj.data.avatar_url + '"/>';
@@ -45,6 +45,8 @@ function callback_user(obj) {
     reponums.innerHTML = addCommas(obj.data.public_repos) + ' public repositories';
     jsonp('https://api.github.com/users/' + user + '/events', 'callback_events');
   }
+  $("#gh-username").fitText();
+
 }
 
 function callback_events(obj) {
@@ -132,7 +134,8 @@ function callback_events(obj) {
 					gist_name = 'gist: ' + this.payload.gist.id;
 					gist_url = this.payload.html_url;
 					gist_link = '<a href="' + gist_url + '">' + gist_name + '</a>';
-					sentence = this.actor.login + ' ' + verb + gist_link; 
+					sentence = this.actor.login + ' ' + verb + gist_link;
+					icon = 'icon-file';
 					break;
 				case 'IssueCommentEvent':
 					verb = 'commented on issue';
@@ -203,6 +206,7 @@ function callback_events(obj) {
 					repo_url = 'https://github.com/' + repo_name;
 					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
 					sentence = this.actor.login + ' ' + verb + repo_link; 
+					icon = 'icon-upload';
 					break;
 				case 'TeamAddEvent':
 					// !TODO TeamAddEvent
