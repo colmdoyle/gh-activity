@@ -302,7 +302,7 @@ function callback_events(obj) {
 				case 'CommitCommentEvent':
 					verb = 'commented on commit';
 					commit_name = this.repo.name+'@'+this.payload.comment.commit_id.substring(0, 7);
-					commit_link = '<a href="' + this.payload.comment.html_url + '">' + commit_name + '</a>';
+					commit_link = '<a href="' + this.payload.comment.html_url + '" target="_blank">' + commit_name + '</a>';
 
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + ' ' + commit_link;
 					icon = 'icon-comments-alt';
@@ -314,12 +314,12 @@ function callback_events(obj) {
 					if (object_type == 'repository') {
 						repo_name = this.repo.name.split("/");
 						repo_url = 'https://github.com/' + repo_name;
-						repo_link = '<a href="' + repo_url + '">' + repo_name[1] + '</a>';
+						repo_link = '<a href="' + repo_url + '" target="_blank">' + repo_name[1] + '</a>';
 						sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + object_type + ' ' + repo_link; 
 					} else {
 						repo_name = this.repo.name;
 						repo_url = 'https://github.com/' + repo_name;
-						repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+						repo_link = '<a href="' + repo_url + '" target="_blank">' + repo_name + '</a>';
 						sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + object_type +' '+this.payload.ref + ' at ' + repo_link; 
 					}
 					
@@ -330,7 +330,7 @@ function callback_events(obj) {
 					object_name = this.payload.ref;
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					repo_link = '<a href="' + repo_url + '" target="_blank">' + repo_name + '</a>';
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + object_type + ' ' + object_name + ' at ' + repo_link;
 					icon = 'icon-trash';
 					break;
@@ -339,21 +339,21 @@ function callback_events(obj) {
 					file_name = this.payload.download.name;
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					repo_link = '<a href="' + repo_url + '" target="_blank">' + repo_name + '</a>';
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + object_type + ' to ' + repo_link; 
 					break;
 				case 'FollowEvent':
 					verb = 'started following ';
 					followed_user = this.payload.target.name;
 					user_url = 'https://github.com/' + followed_user;
-					user_link = '<a href="' + user_url + '">' + followed_user + '</a>';
+					user_link = '<a href="' + user_url + '" target="_blank">' + followed_user + '</a>';
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + user_link; 
 					break;
 				case 'ForkEvent':
 					verb = 'forked ';
 					dest_repo_name = this.payload.forkee.full_name;
 					dest_repo_url = 'https://github.com/' + dest_repo_name;
-					dest_repo_link = '<a href="' + dest_repo_url + '">' + dest_repo_name + '</a>';
+					dest_repo_link = '<a href="' + dest_repo_url + '" target="_blank">' + dest_repo_name + '</a>';
 					
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + dest_repo_link; 
 					break;
@@ -362,7 +362,7 @@ function callback_events(obj) {
 					
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					repo_link = '<a href="' + repo_url + '" target="_blank">' + repo_name + '</a>';
 
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + ' to ' + repo_link;
 					break;
@@ -370,18 +370,18 @@ function callback_events(obj) {
 					verb = this.payload.action + 'd ';
 					gist_name = 'gist: ' + this.payload.gist.id;
 					gist_url = this.payload.html_url;
-					gist_link = '<a href="' + gist_url + '">' + gist_name + '</a>';
+					gist_link = '<a href="' + gist_url + '" target="_blank">' + gist_name + '</a>';
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + gist_link;
 					icon = 'icon-file';
 					break;
 				case 'IssueCommentEvent':
 					verb = 'commented on issue';
 					issue_name = this.payload.issue.title;
-					issue_link = '<a href="' + this.payload.issue.html_url + '">' + issue_name + '</a>';
+					issue_link = '<a href="' + this.payload.issue.html_url + '" target="_blank">' + issue_name + '</a>';
 
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					repo_link = '<a href="' + repo_url + '" target="_blank">' + repo_name + '</a>';
 
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + ' ' + issue_link + ' at ' + repo_link;
 					icon = 'icon-comments-alt';
@@ -389,11 +389,11 @@ function callback_events(obj) {
 				case 'IssuesEvent':
 					verb = this.payload.action + ' issue';
 					issue_name = this.payload.issue.title;
-					issue_link = '<a href="' + this.payload.issue.html_url + '">' + issue_name + '</a>';
+					issue_link = '<a href="' + this.payload.issue.html_url + '" target="_blank">' + issue_name + '</a>';
 
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					repo_link = '<a href="' + repo_url + '" target="_blank">' + repo_name + '</a>';
 
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + ' ' + issue_link + ' at ' + repo_link;
 					if (this.payload.action =='closed'){
@@ -410,7 +410,7 @@ function callback_events(obj) {
 					
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					repo_link = '<a href="' + repo_url + '" target="_blank">' + repo_name + '</a>';
 					
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + ' ' + member_name + ' to ' + repo_link; 
 					break;
@@ -418,17 +418,17 @@ function callback_events(obj) {
 					verb = 'open sourced ';
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					repo_link = '<a href="' + repo_url + '" target="_blank">' + repo_name + '</a>';
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + repo_link; 
 					break;
 				case 'PullRequestEvent':
 					verb = this.payload.action + ' pull request';
 					pull_title = this.payload.pull_request.title;
-					pull_link = '<a href="' + this.payload.pull_request.html_url + '">' + pull_title + '</a>';
+					pull_link = '<a href="' + this.payload.pull_request.html_url + '" target="_blank">' + pull_title + '</a>';
 
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					repo_link = '<a href="' + repo_url + '" target="_blank">' + repo_name + '</a>';
 
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + ' ' + pull_link + ' at ' + repo_link;
 					break;
@@ -441,7 +441,7 @@ function callback_events(obj) {
 					verb = 'pushed a commit to ';
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '">' + repo_name + '</a>';
+					repo_link = '<a href="' + repo_url + '" target="_blank">' + repo_name + '</a>';
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + repo_link; 
 					icon = 'icon-upload';
 					break;
@@ -454,7 +454,7 @@ function callback_events(obj) {
 					verb = 'starred ';
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '"> ' + repo_name + '</a>';
+					repo_link = '<a href="' + repo_url + '" target="_blank"> ' + repo_name + '</a>';
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + repo_link; 
 					icon = 'icon-star';
 					break;
@@ -462,7 +462,7 @@ function callback_events(obj) {
 					verb = 'did something with ';
 					repo_name = this.repo.name;
 					repo_url = 'https://github.com/' + repo_name;
-					repo_link = '<a href="' + repo_url + '"> ' + repo_name + '</a>';
+					repo_link = '<a href="' + repo_url + '" target="_blank"> ' + repo_name + '</a>';
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + repo_link; 
 					break;
 			}
