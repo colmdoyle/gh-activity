@@ -11,7 +11,9 @@ This Activity widget allows you to show events related to users and individual r
 
 The widget can be included by simply using an `iframe` with the following format -
 
-`<iframe src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=USERNAME&repo=REPONAME&type=TYPE" allowtransparency="true" frameborder="0" scrolling="0" width="300" height="300"></iframe>`
+```
+<iframe src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=USERNAME&repo=REPONAME&type=TYPE" allowtransparency="true" frameborder="0" scrolling="0" width="300" height="300"></iframe>
+```
 
 ### Fields
 
@@ -25,11 +27,15 @@ The widget can be included by simply using an `iframe` with the following format
 
 __Activity by [colmdoyle](https://github.com/colmdoyle)__
 
-`<iframe src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&type=user" allowtransparency="true" frameborder="0" scrolling="0" width="300" height="300"></iframe>`
+```
+<iframe src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&type=user" allowtransparency="true" frameborder="0" scrolling="0" width="300" height="300"></iframe>
+```
 
 __Activity on the [gh-activity](https://github.com/colmdoyle/gh-activity) repo__
 
-`<iframe src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&type=user" allowtransparency="true" frameborder="0" scrolling="0" width="300" height="300"></iframe>`
+```
+<iframe src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&type=user" allowtransparency="true" frameborder="0" scrolling="0" width="300" height="300"></iframe>
+```
 
 ## Author
 
