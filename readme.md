@@ -50,7 +50,7 @@ __Colm Doyle__
 
 ## Acknowledgements
 
-This widget was inspired by a mix of [Mark Otto](http://github.com/markdotto)'s [GitHub Buttons](http://ghbtns.com/) and [Facebook](http://github.com/facebook)'s [Activity Feed](https://developers.facebook.com/docs/reference/plugins/activity/)
+This widget was inspired by a mix of [Mark Otto](http://github.com/mdo)'s [GitHub Buttons](http://ghbtns.com/) and [Facebook](http://github.com/facebook)'s [Activity Feed](https://developers.facebook.com/docs/reference/plugins/activity/)
 
 Also, the following plugins/frameworks are used and acknowledged in the code.
 
