@@ -40,7 +40,6 @@ background-image: -webkit-gradient(
 );
 }
 
-
 .container {
 	width: 100%;
 	padding: 0;
@@ -52,6 +51,7 @@ background-image: -webkit-gradient(
 #name {
 	text-shadow: 0 1px 0 #AAA;
 }
+
 body {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 14px;
@@ -78,9 +78,11 @@ body:before, body:after {
     right: 0;
     height: 2px;;
 }
+
 body:before {
     top: 0;
 }
+
 body:after {
     bottom: 0;
 }
@@ -154,7 +156,7 @@ body:after {
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
-.clearfix{*zoom:1}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0}.clearfix:after{clear:both}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}a:focus{outline:thin dotted #333;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}a:hover,a:active{outline:0}img{max-width:100%;width:auto\9;height:auto;vertical-align:middle;border:0;-ms-interpolation-mode:bicubic}body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:20px;color:#333;background-color:#fff}a{color:#08c;text-decoration:none}a:hover{color:#005580;text-decoration:underline}.row{margin-left:-20px;*zoom:1}.row:before,.row:after{display:table;content:"";line-height:0}.row:after{clear:both}[class*="span"]{float:left;min-height:1px;margin-left:20px}.container{margin-right:auto;margin-left:auto;*zoom:1}.container:before,.container:after{display:table;content:"";line-height:0}.container:after{clear:both}p{margin:0 0 10px}.muted{color:#999}a.muted:hover{color:#808080}h1,h2,h3,h4,h5,h6{margin:10px 0;font-family:inherit;font-weight:bold;line-height:20px;color:inherit;text-rendering:optimizelegibility}h1,h2,h3{line-height:40px}h1{font-size:38.5px}h2{font-size:31.5px}h3{font-size:24.5px}h4{font-size:17.5px}h5{font-size:14px}h6{font-size:11.9px}h1 small{font-size:24.5px}h2 small{font-size:17.5px}h3 small{font-size:14px}h4 small{font-size:14px}.dl-horizontal dd{margin-left:180px}hr{margin:20px 0;border:0;border-top:1px solid #eee;border-bottom:1px solid #fff}
+.clearfix{*zoom:1}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0}.clearfix:after{clear:both}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}a:focus{outline:thin dotted #333;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}a:hover,a:active{outline:0}img{max-width:100%;width:auto\9;height:auto;vertical-align:middle;border:0;-ms-interpolation-mode:bicubic}body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:20px;color:#333;background-color:#fff}a{color:#08c;text-decoration:none}a:hover{color:#005580;text-decoration:underline}.row{margin-left:-20px;*zoom:1}.row:before,.row:after{display:table;content:"";line-height:0}.row:after{clear:both}[class*="span"]{float:left;min-height:1px;margin-left:20px}.container{margin-right:auto;margin-left:auto;*zoom:1}.container:before,.container:after{display:table;content:"";line-height:0}.container:after{clear:both}p{margin:0 0 10px}.muted{color:#999}a.muted:hover{color:#808080}h1,h2,h3,h4,h5,h6{margin:10px 0;font-family:inherit;font-weight:bold;line-height:20px;color:inherit;text-rendering:optimizelegibility}h1,h2,h3{line-height:40px}h1{font-size:38.5px}h2{font-size:31.5px}h3{font-size:24.5px}h4{font-size:17.5px}h5{font-size:14px}h6{font-size:11.9px}h1 small{font-size:24.5px}h2 small{font-size:17.5px}h3 small{font-size:14px}h4 small{font-size:14px}
 /*!
  *  END Bootstrap v2.2.2
  *
@@ -269,7 +271,6 @@ function callback_user(obj) {
 }
 
 function callback_repo(obj) {
-	console.log(obj);
 	if (obj.data.message && obj.data.message.substr(0, 3) === 'API') {
 	  gravatar.innerHTML = '<img src="img/gravatar-user-420.png"/>';
     username.innerHTML = '<a target="_blank" href="https://github.com/'+user+'/'+repo+'">'+user+'/'+repo+'</a>';
@@ -284,18 +285,18 @@ function callback_repo(obj) {
   }
   $("#gh-username").fitText(1.1);
  	dtls_height = $('#info-container').outerHeight();
+ 	body_width = $('body').innerWidth();
 	$('body').css("padding-top", dtls_height+"px");
+	$('#activities-container').css('width', body_width+'px');
 
 }
 
 
 
 function callback_events(obj) {
-	console.log('loop');
 	var activities = obj.data;
 	activities = activities.reverse();
 		$.each(activities, function(index) {
-			//console.log(this);
 			var icon = 'icon-github';
 			switch(this.type)
 			{
@@ -485,7 +486,6 @@ function callback_events(obj) {
 }
 
 if (type == 'repo') {
-	console.log('https://api.github.com/repos/' + user + '/' + repo);
 	jsonp('https://api.github.com/repos/' + user + '/' + repo, 'callback_repo');
 } else if (type == 'user') {
 	jsonp('https://api.github.com/users/' + user, 'callback_user');
@@ -493,7 +493,9 @@ if (type == 'repo') {
 
 $(window).resize(function() {
  	dtls_height = $('#info-container').outerHeight();
+ 	body_width = $('body').innerWidth();
 	$('body').css("padding-top", dtls_height+"px");
+	$('#activities-container').css('width', body_width+'px');
 });
 
   </script>
