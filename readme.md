@@ -36,7 +36,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="300" height="300">
 __Activity on the [gh-activity](https://github.com/colmdoyle/gh-activity) repo__
 
 ``` html
-<iframe src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&type=user" 
+<iframe src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&repo=gh-activity&type=user" 
 allowtransparency="true" frameborder="0" scrolling="0" width="300" height="300"></iframe>
 ```
 
