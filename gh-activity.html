@@ -324,6 +324,18 @@ function callback_events(obj) {
 						sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + object_type +' '+this.payload.ref + ' at ' + repo_link; 
 					}
 					
+					if (object_type == 'tag') {
+						icon = 'icon-tag';
+					}
+					
+					if (object_type == 'repository') {
+						icon = 'icon-book';
+					}
+					
+					if (object_type == 'branch') {
+						icon = 'icon-plus-sign';
+					}
+					
 					break;
 				case 'DeleteEvent':
 					verb = 'deleted ';
@@ -342,6 +354,7 @@ function callback_events(obj) {
 					repo_url = 'https://github.com/' + repo_name;
 					repo_link = '<a href="' + repo_url + '" target="_blank">' + repo_name + '</a>';
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + object_type + ' to ' + repo_link; 
+					icon = 'icon-paper-clip';
 					break;
 				case 'FollowEvent':
 					verb = 'started following ';
@@ -357,6 +370,7 @@ function callback_events(obj) {
 					dest_repo_link = '<a href="' + dest_repo_url + '" target="_blank">' + dest_repo_name + '</a>';
 					
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + dest_repo_link; 
+					icon = 'icon-copy';
 					break;
 				case 'ForkApplyEvent':
 					verb = 'applied fork commits';
@@ -432,6 +446,7 @@ function callback_events(obj) {
 					repo_link = '<a href="' + repo_url + '" target="_blank">' + repo_name + '</a>';
 
 					sentence ='<a href="https://github.com/'+this.actor.login+'" target="_blank">'+this.actor.login+'</a>' + ' ' + verb + ' ' + pull_link + ' at ' + repo_link;
+					icon = 'icon-share';
 					break;
 				case 'PullRequestReviewCommentEvent':
 					// !TODO PullRequestReviewCommentEvent
