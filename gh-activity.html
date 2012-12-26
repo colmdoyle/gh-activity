@@ -247,12 +247,12 @@ function jsonp(path, callback_var) {
 
 function callback_user(obj) {
 	if (obj.data.message && obj.data.message.substr(0, 3) === 'API') {
-	  gravatar.innerHTML = '<img src="img/gravatar-user-420.png"/>';
+	  gravatar.innerHTML = '<img src="img/gravatar-user-420.png" id="user_gravatar" />';
     username.innerHTML = '<a target="_blank" href="https://github.com/'+user+'">'+user+'</a>';
     $('#gh-repo-nums').remove();
     console.warn('GitHub Rate Limit Exceeded');
 	} else {
-    gravatar.innerHTML = '<img src="' + obj.data.avatar_url + '&s=60"/>';
+    gravatar.innerHTML = '<img src="' + obj.data.avatar_url + '&s=60" id="user_gravatar"/>';
     if (!obj.data.name) {
 	    username.innerHTML = '<a target="_blank" href="https://github.com/'+obj.data.login+'">'+obj.data.login+'</a>';
     } else {
@@ -267,6 +267,12 @@ function callback_user(obj) {
  	body_width = $('body').innerWidth();
 	$('body').css("padding-top", dtls_height+"px");
 	$('#activities-container').css('width', body_width+'px');
+ 	var gh_user_dtls_height = $('#gh-user-dtls').height() - 10;
+	$('#user_gravatar').attr({
+		width : gh_user_dtls_height,
+		height : gh_user_dtls_height
+	});
+
 
 }
 
@@ -288,6 +294,12 @@ function callback_repo(obj) {
  	body_width = $('body').innerWidth();
 	$('body').css("padding-top", dtls_height+"px");
 	$('#activities-container').css('width', body_width+'px');
+ 	var gh_user_dtls_height = $('#gh-user-dtls').height() - 10;
+	$('#user_gravatar').attr({
+		width : gh_user_dtls_height,
+		height : gh_user_dtls_height
+	});
+
 
 }
 
@@ -511,6 +523,11 @@ $(window).resize(function() {
  	body_width = $('body').innerWidth();
 	$('body').css("padding-top", dtls_height+"px");
 	$('#activities-container').css('width', body_width+'px');
+ 	var gh_user_dtls_height = $('#gh-user-dtls').height() - 10;
+	$('#user_gravatar').attr({
+		width : gh_user_dtls_height,
+		height : gh_user_dtls_height
+	});
 });
 
   </script>
