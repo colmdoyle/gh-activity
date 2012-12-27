@@ -9,29 +9,30 @@
   </head>
   <body onload="prettyPrint()">
   	<header class="container">
-  		<div class="row">
-  			<div class="span12">
-	  			<a href="https://twitter.com/share" class="twitter-share-button" data-via="colmisainmdom">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  				<div class="fb-like" data-href="http://colmdoyle.github.com/gh-activity/index.html" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-  			</div>
-  		</div>
   		<div class="row" id="header-hero">
   			<div class="span12">
 			    	<h1>GitHub Activity Widget</h1>
 			    	<p class="subtitle">Show off your activity on the world's largest open source community</p>
   			</div>
   		</div>
+  		<div class="row">
+  			<div class="span12">
+	  			<a href="https://twitter.com/share" class="twitter-share-button" data-via="colmisainmdom">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  				<div class="fb-like" data-href="http://colmdoyle.github.com/gh-activity/index.html" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+  			</div>
+  		</div>
+ 		<hr />
   	</header>
   	<section class="container">
   		<div class="row">
   			<div class="span4">
-  				<iframe seamless="seamless" src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&repo=gh-activity&type=repo" width="300" height="300"></iframe>
+  				<iframe allowtransparency="true" frameborder="0" scrolling="0" src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&repo=gh-activity&type=repo" width="300" height="300"></iframe>
   			</div>
   			<div class="span8">
 	  			<h2>Repo Activity</h2>
 	  			<p>
-	  				<pre class="prettyprint"><code class="language-html">&lt;iframe seamless=&quot;seamless&quot; src=&quot;http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&amp;repo=gh-activity&amp;type=repo&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/iframe&gt;</code></pre>
-	  				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut ipsum quam. Nulla facilisi. Vestibulum imperdiet imperdiet turpis nec viverra. Cras sed sapien purus, non dignissim enim. Suspendisse potenti. Mauris sollicitudin, libero eu elementum dignissim, mi sapien rhoncus augue, suscipit volutpat lectus tortor eu massa. Maecenas at molestie lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam auctor sapien vitae velit lobortis quis aliquam risus ultricies. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent semper eleifend nisl, in bibendum arcu laoreet sit amet. Nulla id augue lorem, eu ornare nisl. Curabitur tincidunt fermentum magna sit amet fermentum.
+	  				The repo type allows you to showcase the activity on an individual repository. You can use it to display public information on the project you're trying to highlight
+	  				<pre class="prettyprint"><code class="language-html">&lt;iframe allowtransparency=&quot;true&quot; frameborder=&quot;0&quot; scrolling=&quot;0&quot; src=&quot;http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&amp;repo=gh-activity&amp;type=repo&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/iframe&gt;</code></pre>
 	  			</p>
   			</div>
   		</div>
@@ -39,16 +40,38 @@
   			<div class="span8">
 	  			<h2>User Activity</h2>
 	  			<p>
-	  				<pre class="prettyprint"><code class="language-html">&lt;iframe seamless=&quot;seamless&quot; src=&quot;http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&amp;type=user&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/iframe&gt;</code></pre>
-	  				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut ipsum quam. Nulla facilisi. Vestibulum imperdiet imperdiet turpis nec viverra. Cras sed sapien purus, non dignissim enim. Suspendisse potenti. Mauris sollicitudin, libero eu elementum dignissim, mi sapien rhoncus augue, suscipit volutpat lectus tortor eu massa. Maecenas at molestie lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam auctor sapien vitae velit lobortis quis aliquam risus ultricies. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent semper eleifend nisl, in bibendum arcu laoreet sit amet. Nulla id augue lorem, eu ornare nisl. Curabitur tincidunt fermentum magna sit amet fermentum.
+	  				The user type displays public activity specific to a GitHub user.
+	  				<pre class="prettyprint"><code class="language-html">&lt;iframe allowtransparency=&quot;true&quot; frameborder=&quot;0&quot; scrolling=&quot;0&quot; seamless=&quot;seamless&quot; src=&quot;http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&amp;type=user&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/iframe&gt;</code></pre>
 	  			</p>
   			</div>
   			<div class="span4">
-  				<iframe seamless="seamless" src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&type=user" width="300" height="300"></iframe>
+  				<iframe allowtransparency="true" frameborder="0" scrolling="0" seamless="seamless" src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&type=user" width="300" height="300"></iframe>
   			</div>
   		</div>
+  		<div class="row">
+  			<div class="span12">
+  				<a href="https://github.com/colmdoyle/gh-activity/archive/master.zip" target="_blank" class="btn btn-primary btn-large">Download from GitHub</a>
+  			</div>
+  		</div>
+ 		<hr />
   	</section>
-  	<footer>
+  	<footer class="container">
+  		<div class="row" id="gh-btns">
+  			<iframe src="http://ghbtns.com/github-btn.html?user=colmdoyle&repo=gh-activity&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+  			<iframe src="http://ghbtns.com/github-btn.html?user=colmdoyle&repo=gh-activity&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+  		</div>
+	  	<div class="row">
+	  		<div class="span6 muted">
+	  			<p>
+		  			Built by <a href="https://github.com/colmdoyle">@colmdoyle</a>
+	  			</p>
+	  		</div>
+	  		<div class="span6">
+	  			<p class="pull-right muted">
+	  				Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
+	  			</p>
+	  		</div>
+	  	</div>
   	</footer>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {

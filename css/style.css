@@ -8,3 +8,11 @@ section > .row {
 	padding-bottom: 10px;
 	text-align: center;
 }
+
+.subtitle {
+	font-size: 20px;
+}
+
+#gh-btns {
+	text-align: center;
+}
