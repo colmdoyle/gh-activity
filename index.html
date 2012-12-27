@@ -1,13 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Bootstrap 101 Template</title>
+    <title>Unofficial GitHub Activity Widget</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/prettify.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
   </head>
-  <body>
-    <h1>Hello, world!</h1>
+  <body onload="prettyPrint()">
+  	<header class="container">
+  		<div class="row">
+  			<div class="span12">
+  				<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  				<div class="fb-like" data-href="http://colmdoyle.github.com/gh-activity/index.html" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+  			</div>
+  		</div>
+  		<div class="row" id="header-hero">
+  			<div class="span12">
+			    	<h1>GitHub Activity Widget</h1>
+			    	<p class="subtitle">Show off your activity on the world's largest open source community</p>
+  			</div>
+  		</div>
+  	</header>
+  	<section class="container">
+  		<div class="row">
+  			<div class="span4">
+  				<iframe seamless="seamless" src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&repo=gh-activity&type=repo" width="300" height="300"></iframe>
+  			</div>
+  			<div class="span8">
+	  			<h2>Repo Activity</h2>
+	  			<p>
+	  				<pre class="prettyprint"><code class="language-html">&lt;iframe seamless=&quot;seamless&quot; src=&quot;http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&amp;repo=gh-activity&amp;type=repo&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/iframe&gt;</code></pre>
+	  				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut ipsum quam. Nulla facilisi. Vestibulum imperdiet imperdiet turpis nec viverra. Cras sed sapien purus, non dignissim enim. Suspendisse potenti. Mauris sollicitudin, libero eu elementum dignissim, mi sapien rhoncus augue, suscipit volutpat lectus tortor eu massa. Maecenas at molestie lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam auctor sapien vitae velit lobortis quis aliquam risus ultricies. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent semper eleifend nisl, in bibendum arcu laoreet sit amet. Nulla id augue lorem, eu ornare nisl. Curabitur tincidunt fermentum magna sit amet fermentum.
+	  			</p>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="span8">
+	  			<h2>User Activity</h2>
+	  			<p>
+	  				<pre class="prettyprint"><code class="language-html">&lt;iframe seamless=&quot;seamless&quot; src=&quot;http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&amp;type=user&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/iframe&gt;</code></pre>
+	  				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut ipsum quam. Nulla facilisi. Vestibulum imperdiet imperdiet turpis nec viverra. Cras sed sapien purus, non dignissim enim. Suspendisse potenti. Mauris sollicitudin, libero eu elementum dignissim, mi sapien rhoncus augue, suscipit volutpat lectus tortor eu massa. Maecenas at molestie lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam auctor sapien vitae velit lobortis quis aliquam risus ultricies. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent semper eleifend nisl, in bibendum arcu laoreet sit amet. Nulla id augue lorem, eu ornare nisl. Curabitur tincidunt fermentum magna sit amet fermentum.
+	  			</p>
+  			</div>
+  			<div class="span4">
+  				<iframe seamless="seamless" src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&type=user" width="300" height="300"></iframe>
+  			</div>
+  		</div>
+  	</section>
+  	<footer>
+  	</footer>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=464515213608531";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/prettify.js"></script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34309270-2']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    
+    </script>
   </body>
 </html>
