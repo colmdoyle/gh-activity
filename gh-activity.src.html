@@ -267,7 +267,6 @@ function callback_user(obj) {
   $("#gh-username").fitText(1.1);
  	dtls_height = $('#info-container').outerHeight();
  	body_width = $('body').innerWidth() -2;
- 	console.log(body_width);
   $('#activities-container').css('padding-top', dtls_height);
 	$('#activities-container').css('width', body_width+'px');
 	$('#info-container').css('width', body_width+'px');
@@ -277,8 +276,6 @@ function callback_user(obj) {
 		width : gh_user_dtls_height,
 		height : gh_user_dtls_height
 	});
-
-
 }
 
 function callback_repo(obj) {
@@ -296,16 +293,16 @@ function callback_repo(obj) {
   }
   $("#gh-username").fitText(1.1);
  	dtls_height = $('#info-container').outerHeight();
- 	body_width = $('body').innerWidth();
+ 	body_width = $('body').innerWidth() -2;
   $('#activities-container').css('padding-top', dtls_height);
 	$('#activities-container').css('width', body_width+'px');
+	$('#info-container').css('width', body_width+'px');
+	$('#footer').css('width', body_width+'px');
  	var gh_user_dtls_height = $('#gh-user-dtls').height() - 10;
 	$('#user_gravatar').attr({
 		width : gh_user_dtls_height,
 		height : gh_user_dtls_height
 	});
-
-
 }
 
 
@@ -524,10 +521,13 @@ if (type == 'repo') {
 }
 
 $(window).resize(function() {
+  $("#gh-username").fitText(1.1);
  	dtls_height = $('#info-container').outerHeight();
- 	body_width = $('body').innerWidth();
+ 	body_width = $('body').innerWidth() -2;
   $('#activities-container').css('padding-top', dtls_height);
 	$('#activities-container').css('width', body_width+'px');
+	$('#info-container').css('width', body_width+'px');
+	$('#footer').css('width', body_width+'px');
  	var gh_user_dtls_height = $('#gh-user-dtls').height() - 10;
 	$('#user_gravatar').attr({
 		width : gh_user_dtls_height,
