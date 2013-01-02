@@ -5,150 +5,7 @@
 </head>
 <body>
 <style type="text/css">
-#footer {
-   position:fixed;
-   left:0px;
-   bottom:0px;
-   height:20px;
-   width:100%;
-	 border-top: #aaa 1px solid;
-	 border-bottom: #aaa 1px solid;
-   background: #fff;
-   font-size: 11px;
-   text-align: right;
-   right: 0;
-   z-index: 1030;
-   margin-bottom: 0;
-   background-image: linear-gradient(bottom, #EAEAEA 0%, #FFFFFF 100%);
-   background-image: -o-linear-gradient(bottom, #EAEAEA 0%, #FFFFFF 100%);
-   background-image: -moz-linear-gradient(bottom, #EAEAEA 0%, #FFFFFF 100%);
-   background-image: -webkit-linear-gradient(bottom, #EAEAEA 0%, #FFFFFF 100%);
-   background-image: -ms-linear-gradient(bottom, #EAEAEA 0%, #FFFFFF 100%);
-   
-   background-image: -webkit-gradient(
-   	linear,
-   	left bottom,
-   	left top,
-   	color-stop(0, #EAEAEA),
-   	color-stop(1, #FFFFFF)
-   );
-}
-
-#footer a {
-	padding-right: 10px;
-}
-
-.container {
-	width: 100%;
-	padding: 0;
-	margin: 0;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#name {
-	text-shadow: 0 1px 0 #AAA;
-}
-
-body {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 14px;
-	line-height: 20px;
-	color: #333;
-	width: 100%;
-	height: 100%;
-	background-color: transparent;
-}
-
-.story-row {
-	width : 100%;
-	padding-left: 10px;
-}
-
-body:before, body:after {
-	border-left: #aaa 2px solid;
-	border-right: #aaa 2px solid;
-    content: "";
-    position: fixed;
-    background: #aaa;
-    left: 0;
-    right: 0;
-    height: 2px;;
-}
-
-body:before {
-    top: 0;
-}
-
-body:after {
-    bottom: 0;
-}
-
-#gh-username {
-	margin-top: 0;
-	line-height: normal;
-}
-
-#gravatar {
-	width: 20%;
-	float: left;
-	padding-left: 10px;
-}
-
-#gh-user-dtls {
-	width: 75%;
-	float: right;
-}
-
-#activities-container {
-	font-size: 11px;
-	overflow: scroll;
-	padding-bottom: 20px;
-}
-
-#info-container {
-	margin-left: auto;
-	margin-right: auto;
-	border-bottom: #aaa 1px solid;
-	padding-top: 10px;
-  position:fixed;
-  top: 1px;
-  left: 1px;
-  background-color: white;
-}
-
-.activity {
-	width: 95%;
-	padding-left: 20px;
-}
-
-.activity-icon {
-	width: 26px;
-	margin-top: auto;
-	margin-bottom: auto;
-	margin-left: 20px;
-	float: left;
-	font-size: 22px;
-	vertical-align: middle;
-	padding-top: 5px;
-}
-
-
-.row {
-	width: 100%;
-	margin-left: 0px;
-}
-
-.timestamp {
-	color: #999;
-	font-size: 10px;
-}
-
-.wrapper {
-	border: 1px #aaa solid;
-	border-radius: 4px;
-}
-/*!
+#footer{position:relative;height:20px;width:100%;border-top:#aaa 1px solid;border-bottom:#aaa 1px solid;background:#fff;font-size:11px;text-align:right;z-index:1030;margin-bottom:0;background-image:linear-gradient(bottom,#eaeaea 0,#fff 100%);background-image:-o-linear-gradient(bottom,#eaeaea 0,#fff 100%);background-image:-moz-linear-gradient(bottom,#eaeaea 0,#fff 100%);background-image:-webkit-linear-gradient(bottom,#eaeaea 0,#fff 100%);background-image:-ms-linear-gradient(bottom,#eaeaea 0,#fff 100%);background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0,#eaeaea),color-stop(1,#fff))}#footer a{padding-right:10px}.container{width:100%;padding:0;margin:0;margin-left:auto;margin-right:auto}#name{text-shadow:0 1px 0 #AAA}body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:20px;color:#333;width:100%;height:100%;background-color:transparent}.story-row{width:100%;padding-left:10px}body:before,body:after{border-left:#aaa 2px solid;border-right:#aaa 2px solid;content:"";position:fixed;background:#aaa;left:0;right:0;height:2px}body:before{top:0}body:after{bottom:0}#gh-username{margin-top:0;line-height:normal}#gravatar{width:20%;float:left;padding-left:10px}#gh-user-dtls{width:75%;float:right}#activities-container{font-size:11px;overflow-y:scroll;position:relative}#info-container{margin-left:auto;margin-right:auto;border-bottom:#aaa 1px solid;padding-top:10px;background-color:white;z-index:1000;position:relative}.activity{width:95%;padding-left:20px}.activity-icon{width:26px;margin-top:auto;margin-bottom:auto;margin-left:20px;float:left;font-size:22px;vertical-align:middle;padding-top:5px}.row{width:100%;margin-left:0}.timestamp{color:#999;font-size:10px}.wrapper{border:1px #aaa solid;border-radius:4px;-webkit-overflow-scrolling:touch!important;overflow:scroll}/*!
  * Bootstrap v2.2.2
  *
  * Copyright 2012 Twitter, Inc
@@ -267,8 +124,9 @@ function callback_user(obj) {
   $("#gh-username").fitText(1.1);
  	dtls_height = $('#info-container').outerHeight();
  	body_width = $('body').innerWidth() -2;
-  $('#activities-container').css('padding-top', dtls_height);
+ 	activity_space = $(window).innerHeight() - ((dtls_height + 4) + 19);
 	$('#activities-container').css('width', body_width+'px');
+	$('#activities-container').css('height', activity_space+'px');
 	$('#info-container').css('width', body_width+'px');
 	$('#footer').css('width', body_width+'px');
  	var gh_user_dtls_height = $('#gh-user-dtls').height() - 10;
@@ -294,8 +152,9 @@ function callback_repo(obj) {
   $("#gh-username").fitText(1.1);
  	dtls_height = $('#info-container').outerHeight();
  	body_width = $('body').innerWidth() -2;
-  $('#activities-container').css('padding-top', dtls_height);
+ 	activity_space = $(window).innerHeight() - ((dtls_height + 4) + 19);
 	$('#activities-container').css('width', body_width+'px');
+	$('#activities-container').css('height', activity_space+'px');
 	$('#info-container').css('width', body_width+'px');
 	$('#footer').css('width', body_width+'px');
  	var gh_user_dtls_height = $('#gh-user-dtls').height() - 10;
@@ -524,8 +383,9 @@ $(window).resize(function() {
   $("#gh-username").fitText(1.1);
  	dtls_height = $('#info-container').outerHeight();
  	body_width = $('body').innerWidth() -2;
-  $('#activities-container').css('padding-top', dtls_height);
+ 	activity_space = $(window).innerHeight() - ((dtls_height + 4) + 19);
 	$('#activities-container').css('width', body_width+'px');
+	$('#activities-container').css('height', activity_space+'px');
 	$('#info-container').css('width', body_width+'px');
 	$('#footer').css('width', body_width+'px');
  	var gh_user_dtls_height = $('#gh-user-dtls').height() - 10;
