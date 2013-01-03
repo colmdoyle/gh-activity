@@ -1,13 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Bootstrap 101 Template</title>
+    <title>Unofficial GitHub Activity Widget - TEST PAGE</title>
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="http://colmdoyle.github.com/gh-activity/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="http://colmdoyle.github.com/gh-activity/css/prettify.css" rel="stylesheet" media="screen">
+    <link href="http://colmdoyle.github.com/gh-activity/css/style.css" rel="stylesheet" media="screen">
+
+    <!-- !Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="http://colmdoyle.github.com/gh-activity/">
+    <meta name="twitter:image" content="http://colmdoyle.github.com/gh-activity/img/octocat.png">
+    <meta name="twitter:title" content="GitHub Activity Widget">
+    <meta name="twitter:description" content="Show off your activity on the world's largest open source community">
+    <meta name="twitter:creator" content="@colmisainmdom">
+    
+    <!-- OG Metadata -->
+		<meta property="og:title" content="GitHub Activity Widget" />
+		<meta property="og:description" content="Show off your activity on the world's largest open source community" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="http://colmdoyle.github.com/gh-activity/" />
+		<meta property="og:image" content="http://colmdoyle.github.com/gh-activity/img/octocat.png" />
+		<meta property="fb:admins" content="260300016" />
+		
   </head>
-  <body>
-    <h1>Hello, world!</h1>
+  <body onload="prettyPrint()">
+  	<header class="container">
+  		<div class="row" id="header-hero">
+  			<div class="span12">
+			    	<h1>GitHub Activity Widget - TEST PAGE</h1>
+			    	<p class="subtitle">Show off your activity on the world's largest open source community</p>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="span12">
+	  			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://colmdoyle.github.com/gh-activity/" data-via="colmisainmdom">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  				<div class="fb-like" data-href="http://colmdoyle.github.com/gh-activity/index.html" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+  			</div>
+  		</div>
+ 		<hr />
+  	</header>
+  	<section class="container">
+  		<div class="row">
+  			<div class="span4">
+  				<iframe allowtransparency="true" frameborder="0" scrolling="no" seamless="seamless" src="gh-activity.src.html?user=colmdoyle&repo=gh-activity&type=repo" width="300" height="300"></iframe>
+  			</div>
+  			<div class="span8">
+	  			<h2>Repo Activity</h2>
+	  			<p>
+	  				The repo type allows you to showcase the activity on an individual repository. You can use it to display public information on the project you're trying to highlight
+	  				<pre class="prettyprint"><code class="language-html">&lt;iframe allowtransparency=&quot;true&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; seamless=&quot;seamless&quot; src=&quot;http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&amp;repo=gh-activity&amp;type=repo&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/iframe&gt;</code></pre>
+	  			</p>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="span8">
+	  			<h2>User Activity</h2>
+	  			<p>
+	  				The user type displays public activity specific to a GitHub user.
+	  				<pre class="prettyprint"><code class="language-html">&lt;iframe allowtransparency=&quot;true&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; seamless=&quot;seamless&quot; src=&quot;http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&amp;type=user&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/iframe&gt;</code></pre>
+	  			</p>
+  			</div>
+  			<div class="span4">
+	  			<iframe allowtransparency="true" frameborder="0" scrolling="no" seamless="seamless" src="gh-activity.src.html?user=colmdoyle&type=user" width="300" height="300"></iframe>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="span12">
+  				<a href="https://github.com/colmdoyle/gh-activity/archive/master.zip" target="_blank" class="btn btn-primary btn-large">Download from GitHub</a>
+  			</div>
+  		</div>
+ 		<hr />
+  	</section>
+  	<footer class="container">
+  		<div class="row" id="gh-btns">
+  			<iframe src="http://ghbtns.com/github-btn.html?user=colmdoyle&repo=gh-activity&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+  			<iframe src="http://ghbtns.com/github-btn.html?user=colmdoyle&repo=gh-activity&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+  		</div>
+	  	<div class="row">
+	  		<div class="span6 muted">
+	  			<p>
+		  			Built by <a href="https://github.com/colmdoyle">@colmdoyle</a>
+	  			</p>
+	  		</div>
+	  		<div class="span6">
+	  			<p class="pull-right muted">
+	  				Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
+	  			</p>
+	  		</div>
+	  	</div>
+  	</footer>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=464515213608531";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="http://colmdoyle.github.com/gh-activity/js/bootstrap.min.js"></script>
+    <script src="http://colmdoyle.github.com/gh-activity/js/prettify.js"></script>
   </body>
 </html>
