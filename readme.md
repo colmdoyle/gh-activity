@@ -13,7 +13,7 @@ The widget can be included by simply using an `iframe` with the following format
 
 ``` html
 <iframe allowtransparency="true" frameborder="0" scrolling="no" seamless="seamless" 
-src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&type=user" width="300" height="300"></iframe>
+src="http://colmdoyle.github.io/gh-activity/gh-activity.html?user=colmdoyle&type=user" width="300" height="300"></iframe>
 ```
 
 ### Fields
@@ -30,14 +30,14 @@ __Activity by [colmdoyle](https://github.com/colmdoyle)__
 
 ``` html
 <iframe allowtransparency="true" frameborder="0" scrolling="no" seamless="seamless" 
-src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&type=user" width="300" height="300"></iframe>
+src="http://colmdoyle.github.io/gh-activity/gh-activity.html?user=colmdoyle&type=user" width="300" height="300"></iframe>
 ```
 
 __Activity on the [gh-activity](https://github.com/colmdoyle/gh-activity) repo__
 
 ``` html
 <iframe allowtransparency="true" frameborder="0" scrolling="no" seamless="seamless" 
-src="http://colmdoyle.github.com/gh-activity/gh-activity.html?user=colmdoyle&repo=gh-activity&type=repo" width="300" height="300"></iframe>
+src="http://colmdoyle.github.io/gh-activity/gh-activity.html?user=colmdoyle&repo=gh-activity&type=repo" width="300" height="300"></iframe>
 ```
 
 ## Author
