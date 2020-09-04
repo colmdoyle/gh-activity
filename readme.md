@@ -1,3 +1,7 @@
+# ARCHIVED
+
+This piece of code has been archived.
+
 # Unofficial GitHub activity widget
 
 This Activity widget allows you to show events related to users and individual repositories on any webpage you choose. It displays
